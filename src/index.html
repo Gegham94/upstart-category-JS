@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
+  <title>Upstart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.3.1/spectre.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div id="app">
+
+    <div class="header">
+      <img src="images/new-upstart-logo.svg" alt="">
+      <form class="atocomplate_form" autocomplete="off"><input id="search_input" class="search_input" type="text"
+          onkeyup="showResults(this.value, true)" placeholder="What do you want to find" />
+        <i class="fa fa-close search_close_icon" id="search_close_icon" onclick="showResults('', false)"></i>
+        <div id="result" class="result"></div>
+      </form>
+      <div class="auth_part">
+        <button class="auth_input">Login</button>
+        <button class="auth_input">Sign up</button>
+      </div>
+    </div>
+
+    <div class="content grid-container">
+      <div class="togglebar_filter">
+        <div class="fiter_btns">
+          <button class="filter_btn"><i class="fa fa-filter"></i>FILTER</button>
+          <select name="sources" id="sources" class="custom-select sources" placeholder="Sort by..."
+            onchange="sort(value)">
+            <option value="newest">Newest</option>
+            <option value="highest-rated">Highest Rated</option>
+          </select>
+        </div>
+
+        <div class="togglebar" id="toggleList">
+          <ul class="title" style="cursor: pointer;">
+            <li id="topicList" style="list-style-type: none;">Topic<i id="topic_arrow"
+                onclick="collapse('topic_arrow','topic_body')" class="fa fa-angle-up"></i>
+                <div id="tree"></div>
+                <div id="selected"></div>
+            </li>
+          </ul>
+          <ul class="title" style="cursor: pointer;">
+            <li id="levelList" style="list-style-type: none;">Level<i id="level_arrow"
+                onclick="collapse('level_arrow','level_body')" class="fa fa-angle-down"></i></li>
+          </ul>
+          <ul class="title" style="cursor: pointer;">
+            <li id="typeList" style="list-style-type: none;">Type<i id="type_arrow"
+                onclick="collapse('type_arrow','type_body')" class="fa fa-angle-down"></i></li>
+          </ul>
+          <ul class="title" style="cursor: pointer;">
+            <li id="languageList" style="list-style-type: none;">Language<i id="language_arrow"
+                onclick="collapse('language_arrow','language_body')" class="fa fa-angle-down"></i></li>
+          </ul>
+        </div>
+      </div>
+      <div id="coursesTableContainer" class="dataContent">
+        <ul id="data-content"></ul>
+        <div id="paginator" style="width: 100%; text-align: center;">
+          <a href="javascript:prevPage()" id="btn_prev" class="prev_btn"><i class="fa fa-arrow-left"></i>Previous</a>
+          <a href="javascript:nextPage()" id="btn_next" class="next_btn">Next<i class="fa fa-arrow-right"></i></a>
+          <span class="current_page">Current page: <span id="page" class="current_page_num"></span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

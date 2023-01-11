@@ -1,0 +1,2 @@
+# templateJs
+A JavaScript project
